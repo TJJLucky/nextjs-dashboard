@@ -2,6 +2,7 @@ import { CheckIcon, ClockIcon } from '@heroicons/react/24/outline';
 import clsx from 'clsx';
 
 export default function InvoiceStatus({ status }: { status: string }) {
+  // 有时你可能需要根据状态或其他条件对元素进行条件式式。
   return (
     <span
       className={clsx(
