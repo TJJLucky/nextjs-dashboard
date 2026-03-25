@@ -1,0 +1,23 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:16
+    container_name: looirobot_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: looirobot
+      POSTGRES_PASSWORD: looirobot
+      POSTGRES_DB: looirobot_app
+    ports:
+      - "5433:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U looirobot -d looirobot_app"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
